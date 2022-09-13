@@ -14,7 +14,7 @@ Import-Module -Name Terminal-Icons
 # PSReadLine
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
-# Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
 
 # Fzf
@@ -29,23 +29,4 @@ Set-Alias g git
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
-}
-
-# Macro
-Set-PSReadLineKeyHandler -Key Ctrl+d `
-                         -BriefDescription BuildCurrentDirectory `
-                         -LongDescription "Build the current directory" `
-                         -ScriptBlock {
-    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("pnpm dev")
-    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
-}
-
-Set-PSReadLineKeyHandler -Key Ctrl+b `
-                         -BriefDescription BuildCurrentDirectory `
-                         -LongDescription "Build the current directory" `
-                         -ScriptBlock {
-    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("pnpm build && pnpm start")
-    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
