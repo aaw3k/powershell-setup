@@ -15,17 +15,6 @@
           "type": "exit"
         },
         {
-          "foreground": "#34d058",
-          "style": "plain",
-          "template": "@{{ .UserName }} ",
-          "type": "session"
-        },
-        {
-          "style": "plain",
-          "template": "\u279c",
-          "type": "text"
-        },
-        {
           "foreground": "#79b8ff",
           "properties": {
             "style": "folder"
